@@ -40,8 +40,17 @@ class Players extends Component {
         window.localStorage.playersState = JSON.stringify(this.state);
     }
 
+    serialize() {
+        const fields = this.state.fields;
+        const filter = field => !!field.value;
+        const rename = field => { return { name: field.value, id: field.id } };
+        const players = fields.filter(filter).map(rename);
+
+        return { players };
+    }
+
     showData() {
-        prompt('Ctrl+A and copy json ↓', JSON.stringify(this.state, null, 2))
+        prompt('Ctrl+A and copy json ↓', JSON.stringify(this.serialize(), null, 2))
     }
 
     render() {
