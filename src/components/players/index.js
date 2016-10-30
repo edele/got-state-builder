@@ -42,20 +42,26 @@ class Players extends Component {
 
     render() {
         return (<div>
-            <h3>Players</h3>
+            <div>
+                <h3>Players</h3>
 
-            { this.state.fields.map((field, index) => {
-                return (<Field
-                    key={field.id}
-                    index={index}
-                    onRemove={this.onFieldRemove.bind(this, field.id)}
-                    onChange={this.onFieldChange.bind(this)}
-                    {...field}
-                />)
-            })}
+                { this.state.fields.map((field, index) => {
+                    return (<Field
+                        key={field.id}
+                        index={index}
+                        onRemove={this.onFieldRemove.bind(this, field.id)}
+                        onChange={this.onFieldChange.bind(this)}
+                        {...field}
+                    />)
+                })}
 
-            <button onClick={this.addField.bind(this)}>+</button>
-            <button onClick={this.save.bind(this)}>save</button>
+                <button onClick={this.addField.bind(this)}>+</button>
+                <button onClick={this.save.bind(this)}>save</button>
+            </div>
+            <div>
+                <pre>{JSON.stringify(this.state, null, 2)}</pre>
+            </div>
+
         </div>);
     }
 }
