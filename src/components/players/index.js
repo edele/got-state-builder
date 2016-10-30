@@ -18,7 +18,6 @@ class Players extends Component {
     }
 
     onFieldRemove(id) {
-        console.log(id)
         this.setState({
             fields: this.state.fields.filter(field => field.id !== id)
         });
