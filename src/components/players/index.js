@@ -76,7 +76,7 @@ class Players extends Component {
                 })}
 
                 <button onClick={this.addField.bind(this)}>+</button>
-                <button onClick={this.save.bind(this)}>save</button>
+                <button onClick={this.save.bind(this)}>save to localStorage</button>
                 <button onClick={this.showData.bind(this)}>serialize</button>
             </div>
         </div>);
