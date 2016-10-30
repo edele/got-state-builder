@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import houses from '../../domain/houses'
 
-class Game extends Component {
+class PositionField extends Component {
     render() {
         const players = [
             { id: 0, name: '. .'},
@@ -15,12 +16,15 @@ class Game extends Component {
         return (
             <div>
                 <span style={nameStyle}>
-                    {this.props.name}
+                    {houses.find(h => h.id === this.props.houseId).name}
                 </span>
-                <select onChange={e => this.props.onChange(
-                    e.currentTarget.value,
-                    this.props.id
-                )}>
+                <select
+                    value={this.props.playerId}
+                    onChange={e => this.props.onChange(
+                        e.currentTarget.value,
+                        this.props.houseId
+                    )}
+                >
                     { players.map(player => (
                         <option key={player.id} value={player.id}>
                             {player.name}
@@ -32,4 +36,4 @@ class Game extends Component {
     }
 }
 
-export default Game;
+export default PositionField;

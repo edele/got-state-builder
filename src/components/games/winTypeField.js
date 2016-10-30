@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import winTypes from '../../domain/winTypes'
 
-class Game extends Component {
+class Form extends Component {
     render() {
         const nameStyle = {
             width: 90,
@@ -9,9 +9,9 @@ class Game extends Component {
         };
 
         return (
-            <div style={{marginTop: 10, marginBottom: 15}}>
+            <div>
                 <span style={nameStyle}> Win type: </span>
-                <select onChange={e => this.props.onChange(e.currentTarget.value)}>
+                <select value={this.props.value} onChange={e => this.props.onChange(e.currentTarget.value)}>
                     { winTypes.map(winType => (
                         <option key={winType.id} value={winType.id}>
                             {winType.name}
@@ -23,4 +23,4 @@ class Game extends Component {
     }
 }
 
-export default Game;
+export default Form;

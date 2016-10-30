@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import houses from '../../domain/houses'
-import HouseField from './houseField'
+import PositionField from './positionField'
 import WinTypeField from './winTypeField'
 
 class Game extends Component {
@@ -9,33 +9,40 @@ class Game extends Component {
         this.state = getInitialState()
     }
 
-    onHouseChange(value, houseId) {
+    onPositionChange(value, houseId) {
         const playerId = Number(value);
-        let houses = this.state.houses.slice();
+        let positions = this.state.positions.slice();
 
-        houses.map(field => {
-            if (field.houseId === houseId)
-                field.playerId = playerId;
+        positions.map(position => {
+            if (position.houseId === houseId)
+                position.playerId = playerId;
 
-            return field;
+            return position;
         })
 
-        this.setState({ houses });
+        this.setState({ positions });
     }
 
     onWinTypeChange(value) {
+        const winType = Number(value);
+        this.setState({ winType });
+    }
 
+    onSubmit() {
+        this.props.onSubmit(this.state);
+        this.setState({ ...getInitialState() });
     }
 
     render() {
         return (
             <div>
-                { houses.map(house => <HouseField
-                    key={house.id}
-                    onChange={this.onHouseChange.bind(this)}
-                    {...house}
+                { this.state.positions.map(position => <PositionField
+                    key={position.houseId}
+                    onChange={this.onPositionChange.bind(this)}
+                    {...position}
                 />)}
                 <WinTypeField onChange={this.onWinTypeChange.bind(this)} />
+                <button onClick={this.onSubmit.bind(this)}>+</button>
             </div>
         )
     }
@@ -43,7 +50,7 @@ class Game extends Component {
 
 const getInitialState = () => {
     let state = {
-        houses: [
+        positions: [
             { houseId: 1, playerId: 0 },
             { houseId: 2, playerId: 0 },
             { houseId: 3, playerId: 0 },
@@ -51,7 +58,7 @@ const getInitialState = () => {
             { houseId: 5, playerId: 0 },
             { houseId: 6, playerId: 0 }
         ],
-        winType: 0
+        winType: 1
     };
 
     return state;

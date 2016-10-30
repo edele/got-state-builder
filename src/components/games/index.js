@@ -20,12 +20,35 @@ class Games extends Component {
 
     }
 
+    onSubmit(formState) {
+        let id = 1;
+        const games = this.state.games;
+
+        if (games.length) {
+            const lastItem = games[games.length - 1];
+            id = lastItem.id + 1;
+        }
+
+        const game = {id, ...formState};
+
+        this.setState({
+            games: [...games, game]
+        })
+    }
+
     render() {
+        console.log(this.state.games)
         return (<div>
             <div>
                 <h3>Games</h3>
+                { this.state.games.map(game => {
+                    return (<Game
+                        key={game.id}
+                        {...game}
+                    />)
+                })}
 
-                <Form/>
+                <Form onSubmit={this.onSubmit.bind(this)}/>
 
                 <button onClick={this.save.bind(this)}>save to localStorage</button>
                 <button onClick={this.showData.bind(this)}>serialize</button>
