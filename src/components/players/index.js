@@ -71,7 +71,7 @@ const getInitialState = () => {
     let state = { fields: [] };
 
     for (let i = 0; i < gameRules.minPlayers; i++) {
-        state.fields.push(getFieldInitialState(i))
+        state.fields.push(getFieldInitialState(i + 1))
     }
 
     return state;
