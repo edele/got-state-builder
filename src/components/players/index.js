@@ -40,14 +40,16 @@ class Players extends Component {
         window.localStorage.playersState = JSON.stringify(this.state);
     }
 
-    componentDidMount() {
-
+    showData() {
+        prompt('Ctrl+A and copy json ↓', JSON.stringify(this.state, null, 2))
     }
 
     render() {
-        const fields = this.state.fields;
-        const isInitial = fields.length < 4 && !!fields.find(field => !field.value)
-        const focusedFieldIndex = isInitial ? 0 : fields.length - 1;
+        let focusedFieldIndex = -1;
+        this.state.fields.find((field, index) => {
+            if (focusedFieldIndex < 0 && field.value === '')
+                focusedFieldIndex = index;
+        })
 
         return (<div>
             <div>
@@ -66,11 +68,8 @@ class Players extends Component {
 
                 <button onClick={this.addField.bind(this)}>+</button>
                 <button onClick={this.save.bind(this)}>save</button>
+                <button onClick={this.showData.bind(this)}>serialize</button>
             </div>
-            <div>
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
-            </div>
-
         </div>);
     }
 }
