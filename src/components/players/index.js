@@ -37,7 +37,8 @@ class Players extends Component {
     }
 
     save() {
-        window.localStorage.playersState = JSON.stringify(this.state);
+        window.localStorage.playersFormState = JSON.stringify(this.state);
+        window.localStorage.playersData = JSON.stringify(this.serialize());
     }
 
     serialize() {
@@ -88,7 +89,7 @@ const getFieldInitialState = id => {
 }
 
 const getInitialState = () => {
-    const savedState = window.localStorage.playersState;
+    const savedState = window.localStorage.playersFormState;
     if (savedState) return JSON.parse(savedState);
 
     let state = { fields: [] };
