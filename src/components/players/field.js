@@ -22,6 +22,7 @@ class PlayerField extends Component {
                         e.currentTarget.value,
                         this.props.id
                     )}
+                    autoFocus={this.props.autoFocus}
                 />
                 {this.renderRemoveButton()}
             </div>

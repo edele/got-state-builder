@@ -40,7 +40,15 @@ class Players extends Component {
         window.localStorage.playersState = JSON.stringify(this.state);
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
+        const fields = this.state.fields;
+        const isInitial = fields.length < 4 && !!fields.find(field => !field.value)
+        const focusedFieldIndex = isInitial ? 0 : fields.length - 1;
+
         return (<div>
             <div>
                 <h3>Players</h3>
@@ -51,6 +59,7 @@ class Players extends Component {
                         index={index}
                         onRemove={this.onFieldRemove.bind(this, field.id)}
                         onChange={this.onFieldChange.bind(this)}
+                        autoFocus={index === focusedFieldIndex}
                         {...field}
                     />)
                 })}
