@@ -18,6 +18,7 @@ class Players extends Component {
     }
 
     onFieldRemove(id) {
+        console.log(id)
         this.setState({
             fields: this.state.fields.filter(field => field.id !== id)
         });
@@ -48,7 +49,7 @@ class Players extends Component {
                 return (<Field
                     key={field.id}
                     index={index}
-                    onRemove={this.onFieldRemove.bind(this, index)}
+                    onRemove={this.onFieldRemove.bind(this, field.id)}
                     onChange={this.onFieldChange.bind(this)}
                     {...field}
                 />)
