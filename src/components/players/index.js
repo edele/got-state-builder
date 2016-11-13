@@ -5,6 +5,13 @@ import gameRules from '../../domain/gameRules'
 export default class Players extends Component {
     constructor() {
         super()
+
+        this.addField = this.addField.bind(this)
+        this.save = this.save.bind(this)
+        this.onFieldChange = this.onFieldChange.bind(this)
+        this.showData = this.showData.bind(this)
+        this.onFieldRemove = this.onFieldRemove.bind(this)
+
         this.state = getInitialState()
     }
 
@@ -69,16 +76,16 @@ export default class Players extends Component {
                     return (<Field
                         key={field.id}
                         index={index}
-                        onRemove={this.onFieldRemove.bind(this, field.id)}
-                        onChange={this.onFieldChange.bind(this)}
+                        onRemove={this.onFieldRemove.bind(null, field.id)}
+                        onChange={this.onFieldChange}
                         autoFocus={index === focusedFieldIndex}
                         {...field}
                     />)
                 })}
 
-                <button onClick={this.addField.bind(this)}>+</button>
-                <button onClick={this.save.bind(this)}>save to localStorage</button>
-                <button onClick={this.showData.bind(this)}>serialize</button>
+                <button onClick={this.addField}>+</button>
+                <button onClick={this.save}>save to localStorage</button>
+                <button onClick={this.showData}>serialize</button>
             </div>
         </div>);
     }

@@ -5,6 +5,11 @@ import Form from './form'
 export default class Games extends Component {
     constructor() {
         super()
+
+        this.onSubmit = this.onSubmit.bind(this)
+        this.save = this.save.bind(this)
+        this.showData = this.showData.bind(this)
+
         this.state = getInitialState()
     }
 
@@ -51,10 +56,10 @@ export default class Games extends Component {
                     />)
                 })}
 
-                <Form onSubmit={this.onSubmit.bind(this)} players={this.state.players} />
+                <Form onSubmit={this.onSubmit} players={this.state.players} />
 
-                <button onClick={this.save.bind(this)}>save to localStorage</button>
-                <button onClick={this.showData.bind(this)}>serialize</button>
+                <button onClick={this.save}>save to localStorage</button>
+                <button onClick={this.showData}>serialize</button>
             </div>
         </div>);
     }

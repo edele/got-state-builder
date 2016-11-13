@@ -6,6 +6,11 @@ import WinTypeField from './winTypeField'
 export default class Game extends Component {
     constructor() {
         super()
+
+        this.onPositionChange = this.onPositionChange.bind(this)
+        this.onWinTypeChange = this.onWinTypeChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+
         this.state = getInitialState()
     }
 
@@ -39,11 +44,11 @@ export default class Game extends Component {
                 { this.state.positions.map(position => <PositionField
                     players={this.props.players}
                     key={position.houseId}
-                    onChange={this.onPositionChange.bind(this)}
+                    onChange={this.onPositionChange}
                     {...position}
                 />)}
-                <WinTypeField onChange={this.onWinTypeChange.bind(this)} />
-                <button onClick={this.onSubmit.bind(this)}>+</button>
+                <WinTypeField onChange={this.onWinTypeChange} />
+                <button onClick={this.onSubmit}>+</button>
             </div>
         )
     }
