@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import houses from '../../domain/houses'
 
-class PositionField extends Component {
+export default class PositionField extends Component {
     render() {
         const players = [
             { id: 0, name: '. .'},
@@ -35,5 +35,3 @@ class PositionField extends Component {
         )
     }
 }
-
-export default PositionField;

@@ -3,7 +3,7 @@ import houses from '../../domain/houses'
 import PositionField from './positionField'
 import WinTypeField from './winTypeField'
 
-class Game extends Component {
+export default class Game extends Component {
     constructor() {
         super()
         this.state = getInitialState()
@@ -63,5 +63,3 @@ const getInitialState = () => {
 
     return state;
 }
-
-export default Game;

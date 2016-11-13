@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import gameRules from '../../domain/gameRules'
 
-class PlayerField extends Component {
+export default class PlayerField extends Component {
     renderRemoveButton() {
         const isDeletable = this.props.index > gameRules.minPlayers - 1;
 
@@ -29,5 +29,3 @@ class PlayerField extends Component {
         )
     }
 }
-
-export default PlayerField;

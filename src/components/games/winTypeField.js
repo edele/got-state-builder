@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import winTypes from '../../domain/winTypes'
 
-class Form extends Component {
+export default class Form extends Component {
     render() {
         const nameStyle = {
             width: 90,
@@ -22,5 +22,3 @@ class Form extends Component {
         )
     }
 }
-
-export default Form;

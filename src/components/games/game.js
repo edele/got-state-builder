@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import houses from '../../domain/houses'
 import winTypes from '../../domain/winTypes'
 
-class Game extends Component {
+export default class Game extends Component {
     render() {
         const players = JSON.parse(window.localStorage.playersData).players;
         const nameStyle = { width: 72, display: 'inline-block' }
@@ -29,5 +29,3 @@ class Game extends Component {
         )
     }
 }
-
-export default Game;

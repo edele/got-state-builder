@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Field from './field'
 import gameRules from '../../domain/gameRules'
 
-class Players extends Component {
+export default class Players extends Component {
     constructor() {
         super()
         this.state = getInitialState()
@@ -100,5 +100,3 @@ const getInitialState = () => {
 
     return state;
 }
-
-export default Players;

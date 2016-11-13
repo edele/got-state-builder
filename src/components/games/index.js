@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Game from './game'
 import Form from './form'
 
-class Games extends Component {
+export default class Games extends Component {
     constructor() {
         super()
         this.state = getInitialState()
@@ -71,5 +71,3 @@ const getInitialState = () => {
 
     return state;
 }
-
-export default Games;
