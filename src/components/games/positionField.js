@@ -25,7 +25,8 @@ export default class PositionField extends Component {
                         this.props.houseId
                     )}
                 >
-                    { players.map(player => (
+                    <option value="">. .</option>
+                    { this.props.players.map(player => (
                         <option key={player.id} value={player.id}>
                             {player.name}
                         </option>
