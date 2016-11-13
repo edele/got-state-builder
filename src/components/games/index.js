@@ -36,8 +36,11 @@ export default class Games extends Component {
         })
     }
 
+    componentDidMount() {
+        
+    }
+
     render() {
-        console.log(this.state.games)
         return (<div>
             <div>
                 <h3>Games</h3>
@@ -48,7 +51,7 @@ export default class Games extends Component {
                     />)
                 })}
 
-                <Form onSubmit={this.onSubmit.bind(this)}/>
+                <Form onSubmit={this.onSubmit.bind(this)} players={this.state.players} />
 
                 <button onClick={this.save.bind(this)}>save to localStorage</button>
                 <button onClick={this.showData.bind(this)}>serialize</button>
@@ -66,7 +69,8 @@ const getInitialState = () => {
     if (savedState) return JSON.parse(savedState);
 
     const state = {
-        games: []
+        games: [],
+        players: []
     };
 
     return state;

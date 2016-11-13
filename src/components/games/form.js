@@ -37,6 +37,7 @@ export default class Game extends Component {
         return (
             <div>
                 { this.state.positions.map(position => <PositionField
+                    players={this.props.players}
                     key={position.houseId}
                     onChange={this.onPositionChange.bind(this)}
                     {...position}

@@ -3,11 +3,6 @@ import houses from '../../domain/houses'
 
 export default class PositionField extends Component {
     render() {
-        const players = [
-            { id: 0, name: '. .'},
-            ...JSON.parse(window.localStorage.playersData).players
-        ];
-
         const nameStyle = {
             width: 90,
             display: 'inline-block'
